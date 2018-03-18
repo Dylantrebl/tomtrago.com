@@ -1,0 +1,36 @@
+<div class='filter'></div>
+<div class='main-wrapper'>
+
+  <script type='text/javascript'>
+let startIndex = 0;
+let endIndex = 4;
+
+setInterval(function () {
+  let idx = Math.ceil(Math.random() * (endIndex - startIndex));
+  let body = document.querySelector('body');
+  let img = new Image();
+  let imgUrl = "/bg/bg"  + idx + ".jpg";
+  img.addEventListener('load', function() {
+    body.style.backgroundImage = "url('" + imgUrl + "')";
+  });
+  img.src = imgUrl;
+
+}, 10000
+);
+</script>
+
+<ul class='navigation-menu'>
+  <li>TOM TRAGO</br></br></li>
+  <% @pages.each do |p| %>
+  <li><%= link_to p.title.upcase, p.link || "##{p.href}", target: "_blank" && p.link.present? || '_self' %></li>
+  <% end %>
+</ul>
+<div class='main-content'>
+  <% @pages.where.not(content: nil).each do |p| %>
+  <section id='<%= p.href %>'>
+
+  <%= p.content.html_safe %>
+  </section>
+  <% end %>
+</div>
+</div>

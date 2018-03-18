@@ -16,7 +16,6 @@ gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'rubocop', '~> 0.53.0'
-  gem 'dotenv-rails'
 end
 
 group :development do

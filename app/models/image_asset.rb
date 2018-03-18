@@ -1,0 +1,2 @@
+class ImageAsset < ApplicationRecord
+end
