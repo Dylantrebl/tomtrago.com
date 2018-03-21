@@ -4,14 +4,15 @@ html {
     position: fixed;
     overflow: hidden;
   }
+  body {
+    background-color: white;
+    background: asset_url('bg0.jpg') no-repeat center center fixed;
+    background-size: cover;
+    transition: background-image 2s ease-in-out;
+    font-family: sans-serif;
+  }
 }
-body {
-  background-color: white;
-  background: asset_url('bg0.jpg') no-repeat center center fixed;
-  background-size: cover;
-  transition: background-image 2s ease-in-out;
-  font-family: 'Helvetica Neue', sans-serif;
-}
+
 
 a {
   color: inherit;
@@ -23,11 +24,12 @@ a {
 }
 
 .main-wrapper {
+  display: flex;
+  align-items: flex-start;
   width: 100vw;
   height: 100vh;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
-
 }
 
 .filter {
@@ -38,6 +40,7 @@ a {
   height: 100%;
   background-color: red;
   opacity: 0.2;
+  z-index: -1;
 }
 
 
@@ -48,20 +51,32 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  top: 0;
-  left: 3.5rem;
-  height: 100%;
-  font-family: 'Helvetica Neue', sans-serif;
   font-size: 4vw;
   line-height: 100%;
   font-weight: 700;
   font-style: italic;
   color: white;
+  border-right: 0.1rem solid white;
+  max-width: 53rem;
+  width: 100%;
+  max-height: calc(100vh - 14.8rem);
+  margin-top: 7.4rem;
+  margin-left: 7.4rem;
+  margin-right: 5.1rem;
+  align-content: center;
 
   li {
-    a:hover {
+    a {
+      transition: color .5s;
+     &:hover {
       color: black;
     }
+  }
+    &.active {
+       a {
+      color: black;
+    }
+  }
   }
 
   li:first-child {
@@ -70,11 +85,10 @@ a {
 }
 
 .main-content {
-  display: flex;
+  /*display: flex;
   flex-direction: column;
   align-items: flex-end;
-  max-width: 90%;
-
+  */
   font-size: calc(1rem + 1.4vw);
   color: white;
   line-height: 120%;
@@ -85,8 +99,6 @@ a {
 
 
   section {
-    max-width: 60%;
-    //margin-right: 10%;
     min-height: 100vh;
     padding-top: 2rem;
     &:first-child {
