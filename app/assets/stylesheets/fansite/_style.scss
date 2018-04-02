@@ -4,10 +4,10 @@
 
 html {
   &, body {
-    overflow: hidden;
+    //overflow: hidden;
     position: fixed;
     @include phablet {
-      overflow: initial;
+      //overflow: initial;
       position: initial;
     }
   }
