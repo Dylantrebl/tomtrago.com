@@ -6,6 +6,10 @@ html {
   &, body {
     overflow: hidden;
     position: fixed;
+    @include phablet {
+      overflow: initial;
+      position: initial;
+    }
   }
   body {
     background-color: white;
@@ -166,7 +170,7 @@ a {
       opacity: 1;
       height: calc(100vh - 8rem);
       @include phablet {
-        margin: 16.5rem 0 0 0;
+        margin: 16.5rem 4rem 4rem 0;
         height: auto;
       }
     }
