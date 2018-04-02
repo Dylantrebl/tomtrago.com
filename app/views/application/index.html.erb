@@ -4,15 +4,15 @@
   <li>TOM TRAGO</br></br></li>
   <% @pages.each do |p| %>
   <% onclick = "return handleHrefClick(event, \'#{p.href}\')".html_safe %>
-  <li data-section-name='<%= p.href %>' class='<%= p.href %>'>
+  <li class='<%= p.href %>'>
     <%= link_to p.title.upcase, (p.link || "##{p.href}"), target: (p.link.present? ? '_blank' : '_self'), onClick: (p.href.present? ? onclick : 'return true;') %>
   </li>
   <% end %>
 </ul>
 <div class='main-content'>
   <svg onClick='resetPopup();' class='close' xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><path d="M38 12.83L35.17 10 24 21.17 12.83 10 10 12.83 21.17 24 10 35.17 12.83 38 24 26.83 35.17 38 38 35.17 26.83 24z"/></svg>
-  <% @pages.where.not(content: nil).each do |p| %>
-  <section class='content-section <%= p.href %>' data-section-color='<%= p.background_color_effect %>'>
+  <% @pages.where(published: true).each do |p| %>
+  <section class='content-section <%= p.href %>'>
     <%= p.content&.html_safe %>
     <% if p.href == 'dates' %>
     <div>
