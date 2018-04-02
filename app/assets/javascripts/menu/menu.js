@@ -32,7 +32,7 @@ var endIndex = 10;
 
 setInterval(function () {
   var idx = Math.ceil(Math.random() * (endIndex - startIndex));
-  var body = document.querySelector('body');
+  var body = document.querySelector('.background');
   var img = new Image();
   var imgUrl = "/bg/bg"  + idx + ".jpg";
   img.addEventListener('load', function() {
