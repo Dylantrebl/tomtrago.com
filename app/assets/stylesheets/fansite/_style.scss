@@ -12,6 +12,7 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-attachment: fixed;
     @include phablet {
       align-items: flex-start;
       justify-content: flex-start;
