@@ -172,7 +172,7 @@ a {
     }
 
     @include phablet {
-      overflow-y: visible;
+      overflow-y: auto;
       position: relative;
       margin: 0;
       width: auto;
