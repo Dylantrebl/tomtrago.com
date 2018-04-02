@@ -3,11 +3,11 @@
 @mixin desktop        { @media (min-width: 1000px) { @content; } }
 
 html {
-  &, body {
-    //overflow: hidden;
+  body {
+    overflow: hidden;
     position: fixed;
     @include phablet {
-      //overflow: initial;
+      overflow: initial;
       position: initial;
     }
   }
