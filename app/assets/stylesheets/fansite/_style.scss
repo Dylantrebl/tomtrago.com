@@ -1,82 +1,92 @@
-@import url('https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i');
+@mixin phablet        { @media (min-width: 550px)  { @content; } }
+@mixin tablet         { @media (min-width: 750px)  { @content; } }
+@mixin desktop        { @media (min-width: 1000px) { @content; } }
+
 html {
-  &, body {
-    position: fixed;
-    overflow: hidden;
-  }
   body {
     background-color: white;
-    background: asset_url('bg0.jpg') no-repeat center center fixed;
+    background: asset_url('bg1.jpg') no-repeat center center fixed;
     background-size: cover;
     transition: background-image 2s ease-in-out;
-    font-family: sans-serif;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include phablet {
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
   }
 }
 
+::-webkit-scrollbar {
+  background-color: transparent;
+}
 
 a {
-  color: inherit;
+  color: white;
   text-decoration: none;
 
   &:hover {
-    color: inherit;
+    color: black;
   }
 }
 
-.main-wrapper {
-  display: flex;
-  align-items: flex-start;
-  width: 100vw;
-  height: 100vh;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-}
-
 .filter {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: red;
-  opacity: 0.2;
-  z-index: -1;
+  @include phablet {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.1;
+    z-index: -1;
+  }
 }
-
-
 
 .navigation-menu {
-  position: fixed;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  font-size: 4vw;
-  line-height: 100%;
-  font-weight: 700;
-  font-style: italic;
+  font-size: 3.6rem;
+  line-height: 120%;
+  font-family: "HelveticaNeue-BoldItalic", Helvetica, sans-serif;
   color: white;
-  border-right: 0.1rem solid white;
-  max-width: 53rem;
-  width: 100%;
-  max-height: calc(100vh - 14.8rem);
-  margin-top: 7.4rem;
-  margin-left: 7.4rem;
-  margin-right: 5.1rem;
-  align-content: center;
+  height: 100vh;
+  min-height: 56.8rem;
+  flex-shrink: 1;
+  flex-grow: 0;
+  width: 30rem;
+  z-index: 3;
+
+  transition: opacity 0.25s;
+
+  &.hide {
+    opacity: 0;
+    z-index: -1;
+    @include phablet {
+      opacity: 1;
+      z-index: auto;
+    }
+  }
+
+  @include phablet {
+    font-size: 4rem;
+    margin-left: initial;
+    margin-right: 7.4rem;
+    padding-right: 4rem;
+    margin-left: 6.8rem;
+  }
 
   li {
     a {
-      transition: color .5s;
-     &:hover {
-      color: black;
+      transition: color .25s;
+      &.active, &:hover {
+        color: black;
+      }
     }
-  }
-    &.active {
-       a {
-      color: black;
-    }
-  }
   }
 
   li:first-child {
@@ -85,24 +95,88 @@ a {
 }
 
 .main-content {
-  /*display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  */
-  font-size: calc(1rem + 1.4vw);
+  z-index: 2;
+  font-size: 2.4rem;
   color: white;
-  line-height: 120%;
+  line-height: 115%;
+  opacity: 0;
+  height: 100vh;
+  width: 100vw;
+  font-family: "HelveticaNeue-BoldItalic", Helvetica, sans-serif;
+  position: fixed;
+  font-size: 2.4rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.25s;
+
+  &.show {
+    opacity: 1;
+  }
+
+  @include phablet {
+    overflow-y: scroll;
+    opacity: 1;
+    background-color: transparent;
+    padding-top: 0;
+    display: block;
+    position: relative;
+    width: initial;
+    height: 100vh;
+    min-width: 40rem;
+    font-size: 2.8rem;
+  }
+
+  .close {
+    background-color: transparent;
+    fill: white;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    width: 3.8rem;
+    height: 3.8rem;
+    background-image: asset_url('close.png');
+
+    @include phablet {
+      display: none;
+    }
+  }
 
   b {
     font-weight: 600;
   }
 
+  #dates {
+    text-transform: uppercase;
+  }
 
-  section {
-    min-height: 100vh;
-    padding-top: 2rem;
-    &:first-child {
-      margin-top: calc(100vh);
+  .content-section {
+    opacity: 0;
+    flex-grow: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    height: 0;
+    width: calc(100vw - 4rem);
+    margin: 5rem 0 0 2rem;
+    transition: opacity 0.25s;
+
+    &.show {
+      opacity: 1;
+      height: calc(100vh - 8rem);
+      @include phablet {
+        margin: 16.5rem 0 0 0;
+        height: auto;
+      }
+    }
+
+    .location {
+      color: black;
+    }
+
+    @include phablet {
+      overflow-y: visible;
+      position: relative;
+      margin: 0;
+      width: auto;
+
     }
   }
 }

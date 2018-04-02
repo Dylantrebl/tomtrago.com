@@ -1,44 +1,33 @@
-function setFilterColor(hex) {
-  let el = document.querySelector('.filter');
-  el.style.backgroundColor = hex;
+function handleHrefClick(e, href) {
+  showPopup(href);
+  return true;
 }
 
-function sectionStartVisible(target){
-  let name = target.dataset.sectionName;
-  let menuItems = document.querySelectorAll('ul.navigation-menu li');
-  menuItems.forEach(function (li) {
-    if (li.dataset.sectionName !== name) {
-      console.log("remove" + li);
-      li.classList.remove('active');
-    } else {
-      li.classList.add('active');
-      console.log(li);
-    }
-  });
-};
-
-
-function handleObserverCallback(entries, observer) {
-  entries.forEach(function (entry) {
-    if (entry) {
-      sectionStartVisible(entry.target);
-    }
-  });
+function showPopup(href) {
+  if (window.showing) window.showing.classList.remove('show');
+  if (window.selectedLink) window.selectedLink.classList.remove('active');
+  let mainmenu = document.querySelector('.navigation-menu');
+  mainmenu.classList.add('hide');
+  let a = document.querySelector('li.' + href + ' a');
+  a.classList.add('active');
+  window.selectedLink = a;
+  let maincontent = document.querySelector('.main-content');
+  maincontent.classList.add('show');
+  let section = document.querySelector('.content-section.' + href);
+  section.classList.add('show');
+  window.showing = section;
 }
 
-function setupObserver() {
-  let observer = new IntersectionObserver(handleObserverCallback, { threshold: 0.2, });
-  let sections = document.querySelectorAll('.main-content section');
-  sections.forEach(function (section) {
-    observer.observe(section);
-  });
+function resetPopup() {
+  let mainmenu = document.querySelector('.navigation-menu');
+  mainmenu.classList.remove('hide');
+  let maincontent = document.querySelector('.main-content');
+  maincontent.classList.remove('show');
+  window.showing.classList.remove('show');
 }
 
-window.addEventListener('load', setupObserver);
-
-
-let startIndex = 0;
-let endIndex = 4;
+let startIndex = 1;
+let endIndex = 10;
 
 setInterval(function () {
   let idx = Math.ceil(Math.random() * (endIndex - startIndex));
@@ -50,5 +39,5 @@ setInterval(function () {
   });
   img.src = imgUrl;
 
-}, 10000
+}, 15000
 );
