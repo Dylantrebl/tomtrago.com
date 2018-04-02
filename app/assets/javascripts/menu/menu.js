@@ -15,6 +15,7 @@ function showPopup(href) {
   maincontent.classList.add('show');
   var section = document.querySelector('.content-section.' + href);
   section.classList.add('show');
+  $(section).scrollTop(0);
   window.showing = section;
 }
 

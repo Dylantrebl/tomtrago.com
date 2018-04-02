@@ -4,7 +4,11 @@
     <meta name="viewport" content="width=device-width">
     <title>Tom Trago</title>
     <%= csrf_meta_tags %>
-
+    <% rels = [] %>
+    <% (1..10).each do |i| %>
+    <% rels << "<link rel=\"preload\" href=\"bg/bg#{i}.jpg\">" %>
+    <% end %>
+    <%= p raw(rels.join) %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
