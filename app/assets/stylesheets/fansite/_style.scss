@@ -3,6 +3,10 @@
 @mixin desktop        { @media (min-width: 1000px) { @content; } }
 
 html {
+  &, body {
+    overflow: hidden;
+    position: fixed;
+  }
   body {
     background-color: white;
     background: asset_url('bg1.jpg') no-repeat center center fixed;
@@ -12,7 +16,6 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-attachment: scroll;
     @include phablet {
       align-items: flex-start;
       justify-content: flex-start;
