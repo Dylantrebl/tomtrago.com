@@ -23,7 +23,8 @@ function resetPopup() {
   mainmenu.classList.remove('hide');
   var maincontent = document.querySelector('.main-content');
   maincontent.classList.remove('show');
-  window.showing.classList.remove('show');
+  if (window.showing) window.showing.classList.remove('show');
+  if (window.selectedLink) window.selectedLink.classList.remove('active');
 }
 
 var startIndex = 1;
