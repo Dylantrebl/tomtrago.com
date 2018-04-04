@@ -17,7 +17,7 @@
     <%= p.content&.html_safe %>
     <% if p.href == 'dates' %>
     <div>
-      <%= raw(@dates.map{ |date| link_to(raw(date.formatted), date.uri, target: '_blank') }.join("<br/>\n")) %>
+      <%= raw(@dates.map{ |date| "<p>" + link_to(raw(date.formatted), date.uri, target: '_blank') + "</p>" }.join("\n")) %>
     </div>
     <% end %>
   </section>

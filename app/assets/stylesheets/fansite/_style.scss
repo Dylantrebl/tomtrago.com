@@ -162,16 +162,24 @@ a {
     font-weight: 600;
   }
 
-  .content-section.dates.show {
-    margin-top: 6rem;
-    @include phablet {
-      margin-top: 0;
-      margin-bottom: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      position: absolute;
+  .content-section.dates {
+    div {
+      margin-left: 2.9em;
+      text-indent: -2.9em;
     }
-    text-transform: uppercase;
+
+    &.show {
+      margin-top: 6rem;
+      @include phablet {
+        height: auto;
+        margin-top: 0;
+        margin-bottom: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        position: absolute;
+      }
+      text-transform: uppercase;
+    }
   }
 
   .content-section {
@@ -182,13 +190,13 @@ a {
     width: calc(100vw - 2rem);
     transition: opacity 0.25s;
 
-    &.show {    
+    &.show {
       margin: 5rem 0 2rem 1rem;
       padding-bottom: 4rem;
       opacity: 1;
       height: calc(100vh - 14rem);
       @include phablet {
-        margin: 29rem 4rem 4rem 0;
+        margin: 16.5rem 4rem 4rem 0;
         height: auto;
       }
     }
