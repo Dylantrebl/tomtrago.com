@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="width=device-width">
+    <% if Rails.env.production? %>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110013651-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-110013651-1');
+
+    </script>
+  <% end %>
+  <meta name="viewport" content="width=device-width">
     <title>Tom Trago</title>
     <%= csrf_meta_tags %>
-    <% rels = [] %>
-    <% (1..10).each do |i| %>
-    <% rels << "<link rel=\"preload\" href=\"bg/bg#{i}.jpg\">" %>
-    <% end %>
-    <%= p raw(rels.join) %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
