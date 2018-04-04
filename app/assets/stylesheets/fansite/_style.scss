@@ -190,6 +190,7 @@ a {
     opacity: 0;
     flex-grow: 0;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     height: 0;
     width: calc(100vw - 2rem);
     transition: opacity 0.25s;
