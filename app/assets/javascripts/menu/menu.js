@@ -44,7 +44,7 @@ function resetPopup() {
   if (window.selectedLink) window.selectedLink.classList.remove('active');
 }
 
-var startIndex = 1;
+var startIndex = 2;
 var endIndex = 10;
 
 if (window.matchMedia('(min-width: 550px)').matches) {

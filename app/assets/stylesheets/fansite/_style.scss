@@ -162,10 +162,15 @@ a {
     font-weight: 600;
   }
 
-  .content-section.dates {
+  .content-section.dates.show {
     margin-top: 2rem;
     @include phablet {
-      margin-top: initial;
+      margin-top: 0;
+      margin-bottom: 0;
+      top: 50%;
+       transform: translateY(-50%);
+
+      position: absolute;
     }
     text-transform: uppercase;
   }
