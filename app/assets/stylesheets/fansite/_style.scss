@@ -36,7 +36,7 @@ a {
 
 .background {
   background-color: white;
-  background: asset_url('bg/bg3.jpg') no-repeat center center fixed;
+  background: asset_url('bg/bg2-small.jpg') no-repeat center center fixed;
   background-size: cover;
   transition: background-image 2s ease-in-out;
   z-index: -2;
@@ -45,6 +45,10 @@ a {
   top: 0;
   width: 100vw;
   bottom: 0;
+  @include phablet {
+    background: asset_url('bg/bg2.jpg') no-repeat center center fixed;
+    background-size: cover;
+  }
 }
 
 .filter {

@@ -47,18 +47,19 @@ function resetPopup() {
 var startIndex = 2;
 var endIndex = 10;
 
-if (window.matchMedia('(min-width: 550px)').matches) {
+setInterval(function () {
+  var idx = Math.ceil(Math.random() * (endIndex - startIndex));
+  var body = document.querySelector('.background');
+  var img = new Image();
+  var add = "";
+  if (window.matchMedia('(max-width: 550px)').matches) {
+    add = "-small"
+  }
+  var imgUrl = "/bg/bg"  + idx + add + ".jpg";
+  img.addEventListener('load', function() {
+    body.style.backgroundImage = "url('" + imgUrl + "')";
+  });
+  img.src = imgUrl;
 
-  setInterval(function () {
-    var idx = Math.ceil(Math.random() * (endIndex - startIndex));
-    var body = document.querySelector('.background');
-    var img = new Image();
-    var imgUrl = "/bg/bg"  + idx + ".jpg";
-    img.addEventListener('load', function() {
-      body.style.backgroundImage = "url('" + imgUrl + "')";
-    });
-    img.src = imgUrl;
-
-  }, 15000
+}, 15000
 );
-}
