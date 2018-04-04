@@ -163,13 +163,12 @@ a {
   }
 
   .content-section.dates.show {
-    margin-top: 2rem;
+    margin-top: 6rem;
     @include phablet {
       margin-top: 0;
       margin-bottom: 0;
       top: 50%;
-       transform: translateY(-50%);
-
+      transform: translateY(-50%);
       position: absolute;
     }
     text-transform: uppercase;
@@ -183,8 +182,7 @@ a {
     width: calc(100vw - 2rem);
     transition: opacity 0.25s;
 
-    &.show {
-      -webkit-overflow-scrolling: touch;
+    &.show {    
       margin: 5rem 0 2rem 1rem;
       padding-bottom: 4rem;
       opacity: 1;
