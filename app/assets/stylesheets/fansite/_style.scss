@@ -196,6 +196,7 @@ a {
       opacity: 1;
       height: calc(100vh - 14rem);
       @include phablet {
+        padding: 0;
         margin: 16.5rem 4rem 4rem 0;
         height: auto;
       }
