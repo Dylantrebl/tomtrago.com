@@ -127,7 +127,8 @@ a {
   position: absolute;
   overflow: hidden;
   font-size: 2rem;
-  //background-color: rgba(0, 0, 0, 0.5);
+  -webkit-overflow-scrolling: touch;
+  background-color: rgba(0, 0, 0, 0.5);
   transition: opacity 0.25s;
 
   &.show {
@@ -190,7 +191,6 @@ a {
     opacity: 0;
     flex-grow: 0;
     overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
     height: 0;
     width: calc(100vw - 2rem);
     transition: opacity 0.25s;
