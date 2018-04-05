@@ -7,6 +7,8 @@ html {
   position: fixed;
   body {
     font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: bold;
+    font-style: italic;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -71,7 +73,6 @@ a {
   align-items: flex-;
   font-size: 3.4rem;
   line-height: 100%;
-  font-family: "HelveticaNeue-BoldItalic", Helvetica, sans-serif;
   color: white;
   height: 100vh;
   min-height: 56.8rem;
@@ -123,7 +124,6 @@ a {
   opacity: 0;
   height: 100%;
   width: 100vw;
-  font-family: "HelveticaNeue-BoldItalic", Helvetica, sans-serif;
   position: absolute;
   overflow: hidden;
   font-size: 2rem;
@@ -209,7 +209,7 @@ a {
 
 
     .location {
-      font-family: "HelveticaNeue-Bold", Helvetica, sans-serif;
+      font-style: normal;
     }
 
     @include phablet {
