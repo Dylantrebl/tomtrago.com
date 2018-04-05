@@ -3,7 +3,7 @@ class PagesController < ActionController::Base
 
   def index
     @pages = Page.all
-    @dates = ArtistEvent.all.map { |event| formatted_event event + "</br>\n" }
+    @dates = ArtistEvent.order(:date).all.map { |event| formatted_event event + "</br>\n" }
     if @pages
       render json: @pages, status: :ok
     else
