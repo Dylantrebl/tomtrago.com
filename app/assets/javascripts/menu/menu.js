@@ -63,3 +63,17 @@ setInterval(function () {
 
 }, 15000
 );
+
+function submitForm(pageId, method) {
+
+  var el = document.querySelector('#page-form');
+  if (!el) return;
+
+  var req = new XMLHttpRequest();
+  var fd = new FormData(el);
+
+  token = document.getElementsByTagName('meta')['csrf-token'].content;
+  req.open(method, pageId);
+  req.setRequestHeader('X-CSRF-Token', token);
+  req.send(fd);
+}
