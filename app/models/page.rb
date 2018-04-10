@@ -15,6 +15,11 @@ class Page < ApplicationRecord
     self[:published]
   end
 
+  def link=(value)
+    self[:link] = value
+    self[:link] = nil if value.blank?
+  end
+
   private
 
   def set_order
