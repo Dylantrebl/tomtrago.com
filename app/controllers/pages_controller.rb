@@ -1,8 +1,8 @@
 class PagesController < ActionController::Base
-  before_action :authenticate_user!
-  protect_from_forgery with: :exception
-  respond_to :html
 
+  before_action :authenticate_user!
+  respond_to :html
+  before_action :check_user
   before_action :set_pages, only: %i[index show]
 
   def index; end
@@ -25,13 +25,18 @@ class PagesController < ActionController::Base
 
   def update
     page = Page.find(params[:id])
-    
+
     unless page.update(page_params)
       render json: page.errors, status: :unprocessable_entity
     end
   end
 
   private
+
+  def check_user
+    p "signed in: #{user_signed_in?}"
+    #redirect_to '/login' if !user_signed_in?
+  end
 
   def page_params
     permitted_params = %i[

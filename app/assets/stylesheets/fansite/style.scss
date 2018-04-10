@@ -221,3 +221,27 @@ a {
     }
   }
 }
+
+.devise-login {
+  a {
+    color: black;
+  }
+  margin: 10rem auto;
+  font: sans-serif;
+  font-style: normal;
+  font-size: 1.4rem;
+  font-weight: normal;
+  h2 {
+    font-size: 2rem;
+  }
+
+  .form-inputs {
+    margin: 1rem;
+
+
+
+    input {
+      margin-left: 2rem;
+    }
+  }
+}

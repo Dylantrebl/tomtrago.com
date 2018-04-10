@@ -64,6 +64,14 @@ setInterval(function () {
 }, 15000
 );
 
+function logout() {
+  return fetch('/logout', {
+    method: 'DELETE'
+  }).then(function() {
+  //  window.location.href = '/';
+  });
+}
+
 function submitForm(pageId, method) {
 
   var el = document.querySelector('#page-form');
