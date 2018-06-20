@@ -667,7 +667,7 @@ GEM
     pg (1.0.0)
     powerpack (0.1.1)
     puma (3.11.3)
-    rack (2.0.4)
+    rack (2.0.5)
     rack-protection (2.0.1)
       rack
     rack-test (0.8.3)
@@ -743,7 +743,7 @@ GEM
       activemodel (> 4, < 5.2)
     spring (2.0.2)
       activesupport (>= 4.2)
-    sprockets (3.7.1)
+    sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (3.2.1)
@@ -802,4 +802,4 @@ RUBY VERSION
    ruby 2.5.0p0
 
 BUNDLED WITH
-   1.16.1
+   1.16.2
