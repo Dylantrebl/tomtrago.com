@@ -4,7 +4,7 @@ class ArtistEvent < ApplicationRecord
     day = format('%02d', date.day)
     month = format('%02d', date.month)
     gig = event_type == 'Concert' ? venue_name : event_name
-    "#{day}-#{month} <span class='location'>#{location}</span> #{gig}"
+    "#{day}-#{month} <span class='location'>#{location}</span> #{venue_name}"
   end
 
 end
