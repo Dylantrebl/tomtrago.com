@@ -18,7 +18,7 @@ class EventUpdateWorker
       ArtistEvent.transaction do
         artist_event = ArtistEvent.where(event_id: event[:id]).first_or_create
         artist_event.event_name = event[:name]
-        artist_event.uri = event[:uri]
+        artist_event.uri = event[:url_tix]
         artist_event.date = event[:eventdate]
         artist_event.venue_name = event[:venue]
         artist_event.city = event[:city]
