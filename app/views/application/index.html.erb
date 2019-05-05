@@ -7,7 +7,7 @@
   <% onclick = "return handleHrefClick(event, \'#{p.href}\')".html_safe %>
   <li class='<%= p.href %>'>
     <%= link_to p.title.upcase, p.link, target: '_blank' if p.link.present? %>
-    <%= p.title.upcase if p.link.empty? %>
+    <%= p.title.upcase if p.link.blank? %>
   </li>
   <% end %>
 </ul>
