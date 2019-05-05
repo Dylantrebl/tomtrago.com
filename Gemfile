@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.5.0'
+ruby '2.5.5'
 
 gem 'autoprefixer-rails', '~> 8.1', '>= 8.1.0.1'
 gem 'aws-sdk', '~> 3.0', '>= 3.0.1'
