@@ -1,9 +1,24 @@
 class Page < ApplicationRecord
   validates :title, presence: true
-  validates :published, inclusion: { in: [true, false] }, default: false
+  #validates :published, inclusion: { in: [true, false] }, default: false
   validates :order, presence: true
 
   before_validation :set_order, if: -> { !order? }
+
+
+  def published=(value)
+    self[:published] = (value == 'true' || value == true)
+    p "setting to #{self[:published]}"
+  end
+
+  def published
+    self[:published]
+  end
+
+  def link=(value)
+    self[:link] = value
+    self[:link] = nil if value.blank?
+  end
 
   private
 

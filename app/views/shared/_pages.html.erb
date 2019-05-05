@@ -1,0 +1,6 @@
+<div class="collection with-header">
+  <div class="collection-header"><h4>Pages</h4></div>
+    <% @pages.each do |page| %>
+    <a href="<%= url_for page %>" class="collection-item"><%= page.title %></a>
+    <% end %>
+</div>

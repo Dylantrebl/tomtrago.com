@@ -1,0 +1,39 @@
+<div class="row">
+  <form id="page-form" class="col s12" action="<%= url_for(action: 'update', controller: 'pages') %>">
+    <div class="row">
+      <div class="input-field col s3">
+        <input placeholder="Page title" id="title" type="text" class="validate" name="page[title]" value="<%= @page.title %>">
+        <label for="title" class='active'>Title</label>
+      </div>
+      <div class="input-field col s3">
+        <input id="link" type="text" class="validate" name="page[link]" value="<%= @page.link %>">
+        <label for="link">URL (leave empty if internal)</label>
+      </div>
+      <div class="input-field col s3">
+        <input id="href" type="text" class="validate" name="page[href]" value="<%= @page.href %>">
+        <label for="href" >href (leave empty if external link)</label>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <textarea id="content" name="page[content]" class="materialize-textarea"><%= @page.content %></textarea>
+        <label for="content">Content</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <p>
+          <label>
+            <input type="hidden" name="page[published]" value="false" />
+            <input id="published" type="checkbox" name="page[published]" class="filled-in" value="true" <%= @page.published ? 'checked' : nil %>>
+            <span>Published</span>
+          </label>
+        </p>
+      </div>
+      <div class="input-field col s6">
+        <a class="waves-effect waves-light btn" onclick="submitForm(<%= @page.id %>, 'PUT');">Apply</a>
+      </div>
+    </div>
+  </form>
+</div>
