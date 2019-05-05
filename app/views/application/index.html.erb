@@ -6,8 +6,7 @@
   <% @pages.each do |p| %>
   <% onclick = "return handleHrefClick(event, \'#{p.href}\')".html_safe %>
   <li class='<%= p.href %>'>
-    <%= link_to p.title.upcase, p.link, target: '_blank' if p.link.present? %>
-    <%= p.title.upcase if p.link.blank? %>
+    <%= link_to p.title.upcase, (p.link || "##{p.href}"), target: (p.link.present? ? '_blank' : '_self'), onClick: (p.href.present? ? onclick : 'return true;') %>
   </li>
   <% end %>
 </ul>
