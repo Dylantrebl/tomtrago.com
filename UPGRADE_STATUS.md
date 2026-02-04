@@ -22,4 +22,4 @@ Full details: **[docs/RUN_AFTER_UPGRADE.md](docs/RUN_AFTER_UPGRADE.md)**.
 
 **Why:** Automated `bundle install` failed in this environment (system Ruby 2.6; native gem build failure). All source and config changes are committed; running the steps in the doc with Ruby 3.4 completes the upgrade.
 
-**Test deploy (Heroku app `tomtragodotcomm`):** See **[docs/TEST_DEPLOY_TOMTRAGODOTCOMM.md](docs/TEST_DEPLOY_TOMTRAGODOTCOMM.md)**. Branch `upgrade-ruby-rails-heroku` is on GitHub; deploy from Dashboard (branch = upgrade-ruby-rails-heroku) or run `./bin/heroku-deploy-upgrade tomtragodotcomm` locally.
+**Test deploy (Heroku app `tomtragodotcomm`):** See **[docs/TEST_DEPLOY_TOMTRAGODOTCOMM.md](docs/TEST_DEPLOY_TOMTRAGODOTCOMM.md)**. If the build fails with **"Gemfile.lock required"**, run `./bin/generate-gemfile-lock` locally (Ruby 3.4 needed), then `git add Gemfile.lock && git commit -m "Add Gemfile.lock" && git push origin development`.

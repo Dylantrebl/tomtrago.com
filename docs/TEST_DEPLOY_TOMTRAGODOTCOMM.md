@@ -1,6 +1,18 @@
 # Test deploy — Heroku app `tomtragodotcomm`
 
-The branch **`upgrade-ruby-rails-heroku`** is pushed to GitHub. Your Heroku app is **tomtragodotcomm** and connected to GitHub.
+The branch **`development`** (and **`upgrade-ruby-rails-heroku`**) has the Rails 7.2 / Ruby 3.4 upgrade. Heroku app **tomtragodotcomm** is connected to GitHub.
+
+**Heroku requires a `Gemfile.lock`.** If the build fails with "Gemfile.lock required", run this **once on your machine** (with Ruby 3.4.7 installed):
+
+```bash
+cd /Users/air/tomtrago.com
+./bin/generate-gemfile-lock
+git add Gemfile.lock
+git commit -m "Add Gemfile.lock for Ruby 3.4"
+git push origin development
+```
+
+Then trigger a new deploy on Heroku (or wait for auto-deploy).
 
 ---
 

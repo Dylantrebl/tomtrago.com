@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# Generate Gemfile.lock for Ruby 3.4 so Heroku can build.
+# Run this ONCE on your machine (with Ruby 3.4.7), then commit and push.
+# Usage: ./bin/generate-gemfile-lock
+
+set -e
+cd "$(dirname "$0")/.."
+
+echo "=== Checking Ruby version (need 3.4.x) ==="
+CURRENT=$(ruby -e "puts RUBY_VERSION" 2>/dev/null || echo "none")
+if [[ ! "$CURRENT" == 3.4.* ]]; then
+  echo "You have Ruby $CURRENT. Install 3.4.7 first:"
+  echo "  rbenv: rbenv install 3.4.7 && rbenv local 3.4.7"
+  echo "  rvm:   rvm install 3.4.7 && rvm use 3.4.7"
+  exit 1
+fi
+echo "Ruby $CURRENT OK"
+
+echo ""
+echo "=== Running bundle install to create Gemfile.lock ==="
+bundle install
+
+echo ""
+echo "=== Done. Now commit and push the lock so Heroku can build: ==="
+echo ""
+echo "  git add Gemfile.lock"
+echo "  git commit -m 'Add Gemfile.lock for Ruby 3.4'"
+echo "  git push origin development"
+echo ""
+echo "Then trigger a new deploy on Heroku (or it may auto-deploy from GitHub)."
+echo ""
