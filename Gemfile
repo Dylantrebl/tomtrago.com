@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '~> 3.4.7'
 
 gem 'autoprefixer-rails', '>= 10.0'
-gem 'aws-sdk', '~> 3.0', '>= 3.0.1'
+# Use fog-aws for S3 (CarrierWave); full aws-sdk pulls in 200+ gems and exceeds Heroku slug limit (500MB)
 gem 'carrierwave', '~> 1.2', '>= 1.2.2'
 gem 'carrierwave-base64', '~> 2.6', '>= 2.6.1'
 gem 'fog-aws', '~> 2.0', '>= 2.0.1'
