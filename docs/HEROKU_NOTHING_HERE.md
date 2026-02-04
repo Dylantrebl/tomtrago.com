@@ -31,7 +31,8 @@ In Dashboard → **tomtragodotcomm** → **Settings** → **Config vars** (or **
 | **RAILS_LOG_TO_STDOUT** | Recommended | Set to `1`. |
 | **REDIS_URL** | Optional | Set automatically if you add **Heroku Redis**. Only needed for ActionCable. |
 
-Most common fix: set **SECRET_KEY_BASE** and add **Heroku Postgres** (so **DATABASE_URL** exists).
+Most common fix: set **SECRET_KEY_BASE** and add **Heroku Postgres** (so **DATABASE_URL** exists).  
+**Full list of vars from the original repo:** see [HEROKU_CONFIG_VARS.md](HEROKU_CONFIG_VARS.md).
 
 ---
 
