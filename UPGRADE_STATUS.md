@@ -13,10 +13,11 @@
 
 ## You need to run (Ruby 3.4 required)
 
-See **[docs/RUN_AFTER_UPGRADE.md](docs/RUN_AFTER_UPGRADE.md)** for:
+1. **Install Ruby 3.4.7** (e.g. `rbenv install 3.4.7 && rbenv local 3.4.7`).
+2. **Run:** `./bin/upgrade-post-install` (bundle, app:update, zeitwerk:check).
+3. **Test:** `bundle exec rails s` and open http://localhost:3000.
+4. **Deploy (when ready):** `./bin/heroku-deploy-upgrade YOUR_APP_NAME`.
 
-1. `bundle install` and `rails app:update` (with Ruby 3.4.7).
-2. Local smoke test.
-3. Heroku stack, buildpacks, Redis, config, and deploy.
+Full details: **[docs/RUN_AFTER_UPGRADE.md](docs/RUN_AFTER_UPGRADE.md)**.
 
 **Why:** Automated `bundle install` failed in this environment (system Ruby 2.6; native gem build failure). All source and config changes are committed; running the steps in the doc with Ruby 3.4 completes the upgrade.

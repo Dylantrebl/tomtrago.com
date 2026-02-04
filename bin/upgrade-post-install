@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+# Run after switching to Ruby 3.4.7 to finish the Rails 7.2 upgrade.
+# Usage: ./bin/upgrade-post-install   or   bash bin/upgrade-post-install
+
+set -e
+cd "$(dirname "$0")/.."
+
+echo "=== Checking Ruby version ==="
+REQUIRED="3.4"
+CURRENT=$(ruby -e "puts RUBY_VERSION")
+if [[ ! "$CURRENT" == "$REQUIRED"* ]]; then
+  echo "Expected Ruby $REQUIRED.x, got $CURRENT. Install with: rbenv install 3.4.7 && rbenv local 3.4.7"
+  exit 1
+fi
+echo "Ruby $CURRENT OK"
+
+echo ""
+echo "=== Removing old Gemfile.lock ==="
+rm -f Gemfile.lock
+
+echo ""
+echo "=== bundle install ==="
+bundle install
+
+echo ""
+echo "=== rails app:update (resolve conflicts if prompted) ==="
+bundle exec rails app:update
+
+echo ""
+echo "=== rails zeitwerk:check ==="
+bundle exec rails zeitwerk:check
+
+echo ""
+echo "=== Done. Start the app with: bundle exec rails s ==="

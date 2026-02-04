@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+# Deploy the upgrade branch to Heroku and set config.
+# Usage: ./bin/heroku-deploy-upgrade <APP_NAME>
+# Example: ./bin/heroku-deploy-upgrade tomtrago-production
+
+set -e
+cd "$(dirname "$0")/.."
+
+APP_NAME="${1:?Usage: $0 <APP_NAME>}"
+
+echo "=== Heroku stack heroku-24 ==="
+heroku stack:set heroku-24 -a "$APP_NAME"
+
+echo ""
+echo "=== Buildpacks (nodejs then ruby) ==="
+heroku buildpacks:clear -a "$APP_NAME"
+heroku buildpacks:add heroku/nodejs -a "$APP_NAME"
+heroku buildpacks:add heroku/ruby -a "$APP_NAME"
+
+echo ""
+echo "=== Redis add-on (skip if already added) ==="
+heroku addons:create heroku-redis -a "$APP_NAME" 2>/dev/null || true
+
+echo ""
+echo "=== Config vars ==="
+heroku config:set RAILS_ENV=production -a "$APP_NAME"
+heroku config:set RAILS_SERVE_STATIC_FILES=1 -a "$APP_NAME"
+heroku config:set RAILS_LOG_TO_STDOUT=1 -a "$APP_NAME"
+heroku config:set SECRET_KEY_BASE="$(bundle exec rails secret)" -a "$APP_NAME"
+
+echo ""
+echo "=== Deploy upgrade branch to main ==="
+git push heroku upgrade-ruby-rails-heroku:main
+
+echo ""
+echo "=== Migrate ==="
+heroku run rails db:migrate -a "$APP_NAME"
+
+echo ""
+echo "=== Tailing logs (Ctrl+C to stop) ==="
+heroku logs --tail -a "$APP_NAME"

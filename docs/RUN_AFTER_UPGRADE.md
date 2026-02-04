@@ -18,14 +18,21 @@ rvm use 3.4.7
 
 ---
 
-## 2. Bundle and Rails
+## 2. Run the post-install script (bundle + rails app:update + zeitwerk)
 
 ```bash
 cd /Users/air/tomtrago.com
+./bin/upgrade-post-install
+```
+
+This script checks Ruby 3.4, removes `Gemfile.lock`, runs `bundle install`, `rails app:update`, and `rails zeitwerk:check`. Resolve any config conflicts when prompted; keep app-specific settings.
+
+**Manual equivalent:**
+
+```bash
 rm -f Gemfile.lock
 bundle install
 bundle exec rails app:update
-# Resolve any config conflicts; keep app-specific settings.
 bundle exec rails zeitwerk:check
 ```
 
@@ -42,22 +49,15 @@ bundle exec rails s
 
 ## 4. Heroku (when ready)
 
-Replace `<APP_NAME>` with your Heroku app name.
+**One command (replace `YOUR_APP_NAME` with your Heroku app name):**
 
 ```bash
-heroku stack:set heroku-24 -a <APP_NAME>
-heroku buildpacks:clear -a <APP_NAME>
-heroku buildpacks:add heroku/nodejs -a <APP_NAME>
-heroku buildpacks:add heroku/ruby -a <APP_NAME>
-heroku addons:create heroku-redis -a <APP_NAME>   # if not already added
-heroku config:set RAILS_ENV=production -a <APP_NAME>
-heroku config:set RAILS_SERVE_STATIC_FILES=1 -a <APP_NAME>
-heroku config:set RAILS_LOG_TO_STDOUT=1 -a <APP_NAME>
-heroku config:set SECRET_KEY_BASE=$(bundle exec rails secret) -a <APP_NAME>
-git push heroku upgrade-ruby-rails-heroku:main
-heroku run rails db:migrate -a <APP_NAME>
-heroku logs --tail -a <APP_NAME>
+./bin/heroku-deploy-upgrade YOUR_APP_NAME
 ```
+
+This sets stack, buildpacks, Redis (if missing), config vars, pushes the upgrade branch, runs migrations, and tails logs.
+
+**Manual equivalent:** see the script source in `bin/heroku-deploy-upgrade` for the full command list.
 
 ---
 
