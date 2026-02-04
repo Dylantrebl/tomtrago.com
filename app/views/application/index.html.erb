@@ -2,14 +2,15 @@
 <div class='main-wrapper'>
 
   <script type='text/javascript'>
+var bgUrls = [<%= (0..4).map { |i| asset_path("bg#{i}.jpg").to_json }.join(',').html_safe %>];
 let startIndex = 0;
-let endIndex = 4;
+let endIndex = bgUrls.length;
 
 setInterval(function () {
-  let idx = Math.ceil(Math.random() * (endIndex - startIndex));
+  let idx = Math.floor(Math.random() * (endIndex - startIndex)) + startIndex;
   let body = document.querySelector('body');
   let img = new Image();
-  let imgUrl = "/bg/bg"  + idx + ".jpg";
+  let imgUrl = bgUrls[idx];
   img.addEventListener('load', function() {
     body.style.backgroundImage = "url('" + imgUrl + "')";
   });

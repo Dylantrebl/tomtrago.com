@@ -1,0 +1,8 @@
+# Exclude from Heroku slug (500MB limit)
+# public/bg duplicates app/assets/images (precompiled to public/assets)
+public/bg/
+# Not needed at runtime
+docs/
+scripts/
+.github/
+.env.example
